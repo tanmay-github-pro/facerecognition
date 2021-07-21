@@ -1,0 +1,6 @@
+.picOut {
+    width: 50%;
+}
+.picOut > img {
+    width: 100%;
+}
