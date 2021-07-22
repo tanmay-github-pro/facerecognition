@@ -6,6 +6,7 @@ import Rank from './Components/Rank/Rank';
 import Clarifai from 'clarifai';
 import Particles from 'react-particles-js';
 import FaceRecognition from './FaceRecognition/FaceRecognition';
+import './App.css';
 
 
 const app = new Clarifai.App(
@@ -13,14 +14,17 @@ const app = new Clarifai.App(
 )
 
 const particleOptions = {
-  polygon: {
-  enable: true,
-  type: 'inside',
-  move: {
-      radius: 10
-  },
-  url: 'path/to/svg.svg'
-}}
+  particles: {
+    number: {
+      value: 90,
+      density: {
+        enable:true,
+        value_area:800
+      }
+    }
+  }
+
+}
 class App extends Component {
   constructor() {
     super();
@@ -46,7 +50,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <Particles params={{particleOptions}} />
+          <Particles className='particles' params={particleOptions} />
           <Navigation />
           <Logo />
           <Rank />
