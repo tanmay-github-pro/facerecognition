@@ -4,12 +4,23 @@ import Logo from './Components/Logo/Logo';
 import Navigation from './Components/Navigation/Navigation';
 import Rank from './Components/Rank/Rank';
 import Clarifai from 'clarifai';
+import Particles from 'react-particles-js';
 import FaceRecognition from './FaceRecognition/FaceRecognition';
 
 
 const app = new Clarifai.App(
   {apiKey: '2bd452c74363437cbc11632971d98f8a'}
 )
+
+const particleOptions = {
+  polygon: {
+  enable: true,
+  type: 'inside',
+  move: {
+      radius: 10
+  },
+  url: 'path/to/svg.svg'
+}}
 class App extends Component {
   constructor() {
     super();
@@ -35,6 +46,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          <Particles params={{particleOptions}} />
           <Navigation />
           <Logo />
           <Rank />
