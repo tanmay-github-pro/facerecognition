@@ -1,5 +1,7 @@
 .picOut {
     width: 50%;
+    height: auto;
+    min-width: 400px;
 }
 .picOut > img {
     width: 100%;

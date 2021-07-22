@@ -5,12 +5,11 @@ import Navigation from './Components/Navigation/Navigation';
 import Rank from './Components/Rank/Rank';
 import Clarifai from 'clarifai';
 import Particles from 'react-particles-js';
-import FaceRecognition from './FaceRecognition/FaceRecognition';
 import './App.css';
-
+import FaceRecognition from './Components/FaceRecognition/FaceRecognition';
 
 const app = new Clarifai.App(
-  {apiKey: '2bd452c74363437cbc11632971d98f8a'}
+  { apiKey: '2bd452c74363437cbc11632971d98f8a' }
 )
 
 const particleOptions = {
@@ -18,8 +17,8 @@ const particleOptions = {
     number: {
       value: 90,
       density: {
-        enable:true,
-        value_area:800
+        enable: true,
+        value_area: 800
       }
     }
   }
@@ -30,38 +29,59 @@ class App extends Component {
     super();
     this.state = {
       input: '',
-      imageURL: ''
+      imageURL: '',
+      box: {}
     }
   }
+
+  calculateFaceLocation = (response) => {
+    const clarifaiFace = response.outputs[0].data.regions[0].region_info.bounding_box;
+    const image = document.getElementById('inputImage');
+    const width = Number(image.width);
+    const height = Number(image.height);
+    return (
+      {
+        leftCol: clarifaiFace.leftCol * width,
+        topRow: clarifaiFace.topRow * height,
+        rightCol: width - (clarifaiFace.topRow * width),
+        bottomRow: height - (clarifaiFace.topRow * height),
+      }
+    )
+  }
+
+  displayFaceBox = (box) => {
+    console.log(box);
+    this.setState({box: box});
+  }
+
   onInputChange = (event) => {
-    console.log(event.target.value)
-  } 
+    this.setState({ input: event.target.value })
+  }
   onButtonSubmit = () => {
-    console.log('click');
+    this.setState({ imageURL: this.state.input });
     app.models.predict(
-      Clarifai.COLOR_MODEL,
-      "https://samples.clarifai.com/face-det.jpg")
-      .then(
-        (response) => console.log(response),
-        (err) => console.log(err)
-      );
+      Clarifai.FACE_DETECT_MODEL,
+      this.state.input)
+      .then(response => 
+        this.displayFaceBox(this.calculateFaceLocation(response))
+      )
+      .catch(err => console.log(err));
   }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <Particles className='particles' params={particleOptions} />
-          <Navigation />
-          <Logo />
-          <Rank />
-          <ImageLinkForm 
-            onInputChange={this.onInputChange} 
-            onButtonSubmit={this.onButtonSubmit}/>
-          <FaceRecognition />
-        </header>
+        <Particles className='particles' params={particleOptions} />
+        <Navigation />
+        <Logo />
+        <Rank />
+        <ImageLinkForm
+          onInputChange={this.onInputChange}
+          onButtonSubmit={this.onButtonSubmit}
+        />
+        <FaceRecognition imageUrl={this.state.imageURL} />
       </div>
     );
-  }  
+  }
 }
 
 export default App;
