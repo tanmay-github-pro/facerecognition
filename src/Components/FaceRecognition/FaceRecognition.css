@@ -1,8 +1,16 @@
-.picOut {
+.absolute {
     width: 50%;
     height: auto;
     min-width: 400px;
 }
-.picOut > img {
+.absolute > img {
     width: 100%;
+}
+.bounding-box {
+    position: absolute;
+    box-shadow: 0 0 0 3px #149df2 inset;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    cursor: pointer;
 }
