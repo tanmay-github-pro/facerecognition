@@ -145,20 +145,33 @@ class App extends Component {
     this.setState({ loading: cond });
   }
 
+  switchRoute = () => {
     const { isSignedIn, imageUrl, route, box } = this.state;
-    return (
-      <div className="App">
-        <Particles className='particles'
-          params={particlesOptions}
-        />
-        <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
-        {route === 'home'
-          ? <div>
-            <Logo />
-            <Rank
-              name={this.state.user.name}
-              entries={this.state.user.entries}
-            />
+
+    // Default value of route in state is signin to show the signin page
+    switch (route) {
+      case 'home':
+        return (
+          <div>
+            <div
+              className='homepage'
+              style={
+                {
+                  // display: 'flex',
+                  // flexFlow: 'row wrap',
+                  // justifyContent: 'space-between',
+                  // alignItems: 'center',
+                  // padding: '2rem',
+                  // alignItems: 'center'
+                }
+              }>
+              <Logo />
+              <Rank
+                name={this.state.user.name}
+                entries={this.state.user.entries}
+              />
+              <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+            </div>
             <ImageLinkForm
               setLoading={this.setLoading}
               onInputChange={this.onInputChange}
@@ -166,11 +179,46 @@ class App extends Component {
             />
             <FaceRecognition box={box} imageUrl={imageUrl} />
           </div>
-          : (
-            route === 'signin'
-              ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
-              : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
-          )
+        );
+
+      case 'signin':
+        return (
+          <>
+            <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+            <Signin setLoading={this.setLoading} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+          </>
+        );
+
+      case 'signout':
+        return (
+          <>
+            <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+            <Signin setLoading={this.setLoading} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+          </>
+        );
+
+      case 'register':
+        return (
+          <>
+            <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange} />
+            <Register setLoading={this.setLoading} loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+          </>
+        );
+
+      default:
+        break;
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Particles className='particles'
+          params={particlesOptions}
+        />
+        {
+          this.state.loading ? <Loader /> :
+            this.switchRoute()
         }
       </div>
     );
