@@ -1,0 +1,45 @@
+main {
+    /* background-image: linear-gradient(89deg, #a086de 0%, #59a3de 100%); */
+    box-shadow: 1.5rem 1.35rem 1.5rem rgba(30,30,30,0.5);
+    border-radius: 1rem;
+}
+
+main::backdrop {
+    backdrop-filter: blur(0.1rem);
+}
+
+.text_input {
+    height: 3rem;
+}
+
+.sign-in-form__or-divider{
+    box-sizing: border-box;
+    border: 0;
+    display: flex;
+    align-items: center;
+    color: rgba(0,0,0,0.9);
+    transition: opacity 0.2s ease-in;
+    vertical-align: baseline;
+    padding: 0 12px;
+    margin: 16px 0;
+    opacity: 1;
+    visibility: visible;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.sign-in-form__or-divider::before, .sign-in-form__or-divider::after {
+    background-color: rgba(0,0,0,0.35);
+    content: '';
+    height: 1px;
+    width: 50%;
+}
+
+.sign-in-form__or-span {
+    /* font-size: 1.4rem; */
+    font-size: 0.875rem;
+    line-height: 1.42857;
+    font-weight: 400;
+    color: rgba(0,0,0,0.6);
+    padding: 0 16px;
+}
