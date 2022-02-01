@@ -46,6 +46,14 @@ button {
   .custom-contain button {
     width: 45%;
   }
+  #image_link_form_component {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  #image_link_form_component p {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
 }
 
 /* input{
