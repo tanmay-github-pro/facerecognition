@@ -1,11 +1,56 @@
 .form {
   width: 700px;
-  background:
+  /* background:
   radial-gradient(circle farthest-side at 0% 50%,#fb1 23.5%,rgba(240,166,17,0) 0)21px 30px,
   radial-gradient(circle farthest-side at 0% 50%,#B71 24%,rgba(240,166,17,0) 0)19px 30px,
   linear-gradient(#fb1 14%,rgba(240,166,17,0) 0, rgba(240,166,17,0) 85%,#fb1 0)0 0,
   linear-gradient(150deg,#fb1 24%,#B71 0,#B71 26%,rgba(240,166,17,0) 0,rgba(240,166,17,0) 74%,#B71 0,#B71 76%,#fb1 0)0 0,
   linear-gradient(30deg,#fb1 24%,#B71 0,#B71 26%,rgba(240,166,17,0) 0,rgba(240,166,17,0) 74%,#B71 0,#B71 76%,#fb1 0)0 0,
-  linear-gradient(90deg,#B71 2%,#fb1 0,#fb1 98%,#B71 0%)0 0 #fb1;
+  linear-gradient(90deg,#B71 2%,#fb1 0,#fb1 98%,#B71 0%)0 0 #fb1; */
+  background-image: 'linear-gradient(89deg, #ao86de 0%, #59a3de 100%)';
+  backdrop-filter: blur(0.01rem);
+  box-shadow: 1.5rem 1.35rem 1.5rem rgba(30,30,30,0.5);
+  border-radius: 1rem;
   background-size:40px 60px;
+  margin-top: 2rem;
 }
+
+button {
+  margin-left: 1.45rem;
+  backdrop-filter: blur(0.01rem);
+  box-shadow: 0.25rem 0.15rem 1.5rem rgba(30,30,30,0.1);
+  border: none;
+  border-radius: 1rem;
+  min-height: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .custom-contain {
+    /* padding: 1.5rem; */
+    display: flex;
+    flex-flow: column wrap;
+    padding: 0.8rem;
+    overflow-x: hidden;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+  }
+  .custom-contain button {
+    min-width: 4rem;
+    margin-top: 1.5rem;
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 425px) {
+  .custom-contain button {
+    width: 45%;
+  }
+}
+
+/* input{
+  backdrop-filter: blur(0.01rem);
+  box-shadow: 0.25rem 0.15rem 1.5rem rgba(30,30,30,0.5);
+  border: none;
+  border-radius: 0.1rem;
+} */
