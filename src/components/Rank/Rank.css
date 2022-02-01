@@ -1,0 +1,10 @@
+#rank-component {
+    padding-top: 0.75rem;
+}
+
+@media
+  /* and (min-width: 300px)  */ (max-width: 450px) {
+      #rank-component {
+          order: 3;
+      }
+}
