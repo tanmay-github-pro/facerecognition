@@ -1,3 +1,22 @@
 .Tilt {
   background: linear-gradient(89deg, #FF5EDF 0%, #04C8DE 100%); /* w3c */
 }
+
+.Tilt-inner {
+  height: 100%;
+}
+
+@media (max-width: 450px) {
+  /* .ma-4 {
+    display: none;
+    visibility: hidden;
+  } */
+  /* .Tilt {
+    display: none;
+    visibility: hidden;
+  } */
+  /* .Tilt-inner {
+    display: none;
+    visibility: hidden;
+  } */
+}
