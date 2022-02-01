@@ -8,3 +8,12 @@ body {
 button {
   cursor: pointer;
 }
+
+@media
+/* and (min-width: 300px)  */ (max-width: 450px) {
+  
+  body {
+    background: linear-gradient(89deg, #f182db 0%, #63acdd 100%); /* w3c */
+    
+  }
+}
