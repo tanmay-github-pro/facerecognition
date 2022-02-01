@@ -1,7 +1,7 @@
 {
   "homepage": "https://tanmay-github-pro.github.io/facerecognition",
   "name": "facerecognitionbrain",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "clarifai": "^2.9.1",
