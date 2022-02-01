@@ -15,3 +15,22 @@
   left: 0;
   z-index: -1;
 }
+
+.homepage {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  align-items: center;
+}
+
+@media
+  /* and (min-width: 300px)  */ (max-width: 450px) {
+  .homepage {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
