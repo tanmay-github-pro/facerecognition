@@ -6,3 +6,13 @@
   justify-content: center;
   cursor: pointer;
 }
+
+.absolute {
+  padding: 4rem 0;
+}
+
+/* .footer {
+  /* position: absolute; */
+  /* bottom: 0; */
+  /* min-height: 4rem; */
+/* } */
