@@ -27,10 +27,11 @@
 
 @media
   /* and (min-width: 300px)  */ (max-width: 450px) {
+    
   .homepage {
-    display: flex;
+    /* display: flex;
     flex-flow: column wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
   }
 }
