@@ -9,6 +9,7 @@ import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import './App.css';
+import Loader from './components/Loader/Loader';
 
 //You must add your own API key here from Clarifai.
 const app = new Clarifai.App({
@@ -50,6 +51,7 @@ class App extends Component {
       box: {},
       route: 'signin',
       isSignedIn: false,
+      loading: false,
       user: {
         id: '',
         name: '',
@@ -139,7 +141,10 @@ class App extends Component {
     this.setState({ route: route });
   }
 
-  render() {
+  setLoading = (cond) => {
+    this.setState({ loading: cond });
+  }
+
     const { isSignedIn, imageUrl, route, box } = this.state;
     return (
       <div className="App">
@@ -155,6 +160,7 @@ class App extends Component {
               entries={this.state.user.entries}
             />
             <ImageLinkForm
+              setLoading={this.setLoading}
               onInputChange={this.onInputChange}
               onButtonSubmit={this.onButtonSubmit}
             />
